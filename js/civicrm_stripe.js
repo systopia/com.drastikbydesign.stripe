@@ -130,9 +130,10 @@
 
       // Handle multiple payment options and Stripe not being chosen.
       if ($form.find(".crm-section.payment_processor-section").length > 0) {
-        if (!($form.find('input[name="hidden_processor"]').length > 0)) {
-          return true;
-        }
+        // FIXME: what was this intended for? This makes STRIPE bail for no reason!
+        // if (!($form.find('input[name="hidden_processor"]').length > 0)) {
+        //   return true;
+        // }
         if ($form.find('input[name="payment_processor"]:checked').length) {
           processorId=$form.find('input[name="payment_processor"]:checked').val();
           if (!($form.find('input[name="stripe_token"]').length) || ($('#stripe-id').length && $('#stripe-id').val() != processorId)) {
